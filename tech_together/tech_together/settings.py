@@ -31,7 +31,7 @@ ALLOWED_HOSTS = [
                 '.pythonanywhere.com'
                 'addiemorang.github.io',
                 '127.0.0.1'
- ]
+]
 
 
 # Application definition
@@ -56,6 +56,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'tech_together/media')
 
 ROOT_URLCONF = 'tech_together.urls'
 
@@ -126,3 +129,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIR = [
+    os.path.join(BASE_DIR, 'tech_together/static')
+]
+
