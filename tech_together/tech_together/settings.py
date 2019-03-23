@@ -25,7 +25,7 @@ SECRET_KEY = '^_vjdkp7q1y_)u1bdgz$-%+zlm_a(0#bv-!d-h4md!yylh%awp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['addiemorang.github.io', '127.0.0.1']
 
 
 # Application definition
