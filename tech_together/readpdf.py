@@ -4,6 +4,7 @@ import numpy as np
 from nltk.corpus import brown, stopwords
 from nltk.cluster.util import cosine_distance
 from operator import itemgetter
+import re
 
 np.seterr(divide='ignore', invalid='ignore')
 
@@ -97,9 +98,16 @@ def get_text_from_lease(pdf_name):
     sentence_list = split_sentences(lease_text)
     return sentence_list
 
+
 #TODO: clean \n characters, weird special characters, deal w weird symbol thing??
 def clean_text(): # returns cleaned up version of text
     return 0
+
+def search_phrase(text, phrase):
+    result = re.findall(phrase, text)
+    print (result)
+
+
 
 if __name__ == "__main__":
     pdf_name = input("what is the filepath of your pdf lease document? ")
@@ -107,3 +115,42 @@ if __name__ == "__main__":
     num = int(input("how many sentences do you want in your lease summary? "))
     for idx, sentence in enumerate(text_rank(sentences, stop_words=stopwords.words('english'), top_n = num)):
         print("%s. %s" % ((idx + 1), ''.join(sentence)))
+
+    dict_syn = {'tenant':'lessee',
+        'lessee': 'tenant',
+        'landlord': 'property owner',
+        'property owner' : 'landlord',
+        'landlord': 'proprietor',
+        'proprietor':'landlord',
+        'landlord':'freeholder',
+        'freeholder':'landlord',
+        'dweller':'tenant',
+        'tenant': 'dweller',
+        'holder':'tenant',
+        'tenant':'holder',
+        'inhabitant':'tenant',
+        'tenant':'inhabitant',
+        'occupant':'tenant',
+        'tenant':'occupant',
+        'renter':'tenant',
+        'tenant':'renter',
+         'tenant':'resident',
+         'resident': 'tenant',
+         'leaseholder':'tenant',
+         'tenant':'leaseholder'}
+
+    dict_categories = {'hold landlord harmless': 'liability',
+        'tenant shall indemnify': 'liability',
+        'no implied warranty': 'liability',
+        'tenant accepts the unit': 'habitability',
+        'accepts unit as is':'habitability',
+        'unit as is condition':'habitability',
+        'tenant warrants habitable condition': 'habitability',
+        'no warranty of habitability':'habitability',
+        'upon payment of sums':'habitability'}
+
+    for c in dict_categories:
+        phrase = c
+        sample = 'include a clause which exculpates or indemnifies the landlord from any and all liability, for example, by providing that “the tenant shall indemnify and hold landlord harmless from any and all claims or assertions of every kind and nature.'
+
+        search_phrase(sample,phrase)
