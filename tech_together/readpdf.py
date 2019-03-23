@@ -104,8 +104,9 @@ def clean_text(): # returns cleaned up version of text
     return 0
 
 def search_phrase(text, phrase):
-    result = re.findall(phrase, text)
-    print (result)
+    result = re.search(phrase, text)
+    if (result is not None):
+        print (result.string)
 
 
 
