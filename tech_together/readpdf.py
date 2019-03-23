@@ -88,7 +88,7 @@ def split_sentences(text):
     return sentences
 
 def get_text_from_lease(pdf_name):
-    pdf = open('blanklease.pdf', 'rb')
+    pdf = open(pdf_name, 'rb')
     pdf_reader = PyPDF2.PdfFileReader(pdf)
     num_pages = pdf_reader.numPages
     lease_text = ''
