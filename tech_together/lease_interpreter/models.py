@@ -4,6 +4,14 @@ from django.utils import timezone
 # Create your models here.
 
 
+class Lease(models.Model):
+    pdf = models.FileField(upload_to='leases/pdfs/')
+
+    def __str__(self):
+        return super().__str__()
+
+
+
 class Post(models.Model):
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
