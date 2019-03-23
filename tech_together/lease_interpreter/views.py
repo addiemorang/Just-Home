@@ -1,6 +1,8 @@
 
 from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
+from django import forms
+from .forms import LeaseForm
 # Create your views here.
 from django.http import HttpResponse
 
@@ -20,4 +22,6 @@ def lease_list(request):
 
 
 def upload_lease(request):
-    return render(request, 'upload_lease.html')
+    return render(request, 'upload_lease.html', {
+        'form': form
+    })

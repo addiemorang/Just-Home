@@ -7,8 +7,7 @@ from django.utils import timezone
 class Lease(models.Model):
     pdf = models.FileField(upload_to='leases/pdfs/')
 
-    def __str__(self):
-        return super().__str__()
+
 
 
 
