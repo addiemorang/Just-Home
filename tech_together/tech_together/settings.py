@@ -26,11 +26,11 @@ SECRET_KEY = '^_vjdkp7q1y_)u1bdgz$-%+zlm_a(0#bv-!d-h4md!yylh%awp'
 DEBUG = True
 
 ALLOWED_HOSTS = [ 
-                 'addiem.pythonanywhere.com', 
-                 'www.addiem.pythonanywhere.com', 
-                 '.pythonanywhere.com'
-                 'addiemorang.github.io',
-                 '127.0.0.1'
+                'wingardl.pythonanywhere.com',
+                'www.wingardl.pythonanywhere.com',
+                '.pythonanywhere.com'
+                'addiemorang.github.io',
+                '127.0.0.1'
  ]
 
 
