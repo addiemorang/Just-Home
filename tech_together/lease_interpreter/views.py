@@ -8,7 +8,15 @@ from .models import Lease
 from django.http import HttpResponse
 
 def home(request):
-    return render(request, 'lease_interpreter/home.html', {})
+    if request.method == 'POST' and request.FILES['myfile']:
+        myfile = request.FILES['myfile']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(filename)
+        return render(request, 'lease_interpreter/home.html', {
+            'uploaded_file_url': uploaded_file_url
+        })
+    return render(request, 'lease_interpreter/home.html')
 
 def upload(request):
      if request.method == 'POST' and request.FILES['myfile']:
