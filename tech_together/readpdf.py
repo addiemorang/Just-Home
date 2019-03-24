@@ -139,7 +139,7 @@ def search_phrase(text, phrase):
     return False
 
 def find_violations(sentences, dict):
-    violation_map = {'liability': [], 'habitability':[], 'quiet enjoyment':[], 'maintenance':[], 'payment':[], 'termination':[], 'right to enter':[]}
+    violation_map = {'liability': [], 'habitability':[], 'quiet enjoyment':[], 'maintenance':[], 'payment':[], 'termination':[], 'entry':[]}
     for sentence in sentences:
         for phrase, category in dict.items():
             contains_phrase = search_phrase(sentence, phrase)
@@ -203,7 +203,40 @@ if __name__ == "__main__":
         'tenant warrants habitable condition': 'habitability',
         'no warranty of habitability':'habitability',
         'upon payment of sums':'habitability'
+        'landlord harmless from claims': 'liability',
+        'observance of all rules':'quiet enjoyement',
+        'observance of all regulations': 'quiet enjoyement',
+        'tenant performance of agreement':'quiet enjoyement',
+        'may peacefully and quietly': 'quiet enjoyement',
+        'enjoy premises for term': 'quiet enjoyement',
+        'tenant failiure to pay':'quiet enjoyement',
+        'not obligated to repair': 'maintenance',
+        'no obligations for maintenance': 'maintenance',
+        'are not landlord resposibility':'maintenance',
+        'tenant needs to fix':'maintenance',
+        'tenant does all repairs':'maintenance',
+        'tenant does apartment maintenance':'maintenance',
+        'termination will become effective':'termination',
+        'enter apartment without permission':'entry',
+        'enter apartment without notice':'entry',
+        'tenant pays all damage':'maintenance',
+        'pay damage above wear': 'maintenance',
+        'at its sole expense': 'maintenance',
+        'maintain premises and appurtenances':'maintenance',
+        'in addition to rent':'maintenance',
+        'wear tear unavoidable casualty':'maintenance',
+        'landlord may make repairs':'maintenance',
+        'tenant shall reimburse landlord':'maintenance',
+        'reimburse landlord for repairs':'maintenance',
+        'reimburse landlord in full':'maintenance',
+        'reimburse cost any repairs':'maintenance',
+        'pay move-in fees':'payment', 'pay move-out fees':'payment',
+        'pay non-refundable fees':'payment',
+        'pay a cleaning deposit':'payment', 'pay a onetime fee':'payment',
+        'deposit returned without interest':'payment',
+        'pay reasonable attorney fee': 'payment'
     }
+
 
     violations = find_violations(sentences, dict_categories)
     response = clarify_rights(violations)
