@@ -18,6 +18,7 @@ def home(request):
         })
     return render(request, 'lease_interpreter/home.html')
 
+
 def upload(request):
      if request.method == 'POST' and request.FILES['myfile']:
         myfile = request.FILES['myfile']
@@ -41,7 +42,7 @@ def upload_lease(request):
         form = LeaseForm(request.FILES['myfile'])
         if form.is_valid():
             form.save()
-            return redirect('leases/list')
+            return redirect('home.resume')
     else:
         form = LeaseForm()
     return render(request, 'lease_interpreter/upload_lease.html', {

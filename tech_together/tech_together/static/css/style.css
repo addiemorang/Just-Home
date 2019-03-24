@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, h6{
 	font-family: 'Roboto Mono', sans-serif;
 }
 .color{
-	color:#303F9F;
+	color:rgb(155, 35, 135);
 }
 ::-webkit-scrollbar{
 	background:#F0F0F0;
@@ -78,7 +78,7 @@ img{
 	Menu
 =======================================================*/
 body.border-dark .menu-btn > .lines > span{
-	background:#303F9F;
+	background:rgb(155, 35, 135);
 }
 .menu-btn > .lines > .l2{
 	margin:6px 0;
@@ -150,7 +150,7 @@ body.border-dark .menu-btn > .lines > span{
 	transition:border-color 2.5s cubic-bezier(.785,.135,.15,.86);
 }
 body.border-dark .main-content > .page-border{
-	border-color:#303F9F;
+	border-color:rgb(155, 35, 135);
 }
 .main-content > .border-top,
 .main-content > .border-bottom{
@@ -227,7 +227,7 @@ body.section-switching .main-content:after{
 }
 body.border-dark .main-content:before,
 body.border-dark .main-content:after{
-	border-color:#303F9F;
+	border-color:rgb(155, 35, 135);
 }
 .sections{
 	height:100%;
@@ -249,7 +249,7 @@ body.border-dark .main-content:after{
 	left:0;
 	height:100%;
 	width:100%;
-	background:#303F9F;
+	background:rgb(155, 35, 135);
 	opacity:.8;
 	z-index:-1;
 }
@@ -339,7 +339,7 @@ a.btn-custom{
 	visibility:visible;
 }
 .btn-custom.btn-color:after{
-	background:#303F9F;
+	background:rgb(155, 35, 135);
 }
 .btn-custom.btn-color:hover:after{
 	opacity:.4;
@@ -578,7 +578,7 @@ body.section-switching.up .animation-block{
 	-ms-transform:rotate(-4deg);
 	-o-transform:rotate(-4deg);
 	transform:rotate(-4deg);
-	background:#303F9F;
+	background:rgb(155, 35, 135);
 	opacity:0;
 	visibility:hidden;
 	z-index:-1;
@@ -609,7 +609,7 @@ body.section-switching.up .animation-block{
 	font-size:54px;
 	line-height:54px;
 	vertical-align:middle;
-	color:#303F9F;
+	color:rgb(155, 35, 135);
 }
 .service > .content{
 	position:relative;
@@ -648,7 +648,7 @@ body.section-switching.up .animation-block{
 	background:#E0E0E0;
 }
 .skill > .bar > .percent{
-	background:#303F9F;
+	background:rgb(155, 35, 135);
 	width:10%;
 	height:6px;
 }
@@ -700,7 +700,7 @@ body.section-switching.up .animation-block{
 	right:0;
 	top:-10px;
 	bottom:-10px;
-	background:#303F9F;
+	background:rgb(155, 35, 135);
 	-webkit-transform:rotate(-4deg);
 	-moz-transform:rotate(-4deg);
 	-ms-transform:rotate(-4deg);
@@ -846,7 +846,7 @@ body.section-switching.up .animation-block{
 }
 .testimonial > .icon{
 	font-size:64px;
-	color:#303F9F;
+	color:rgb(155, 35, 135);
 	opacity:.6;
 }
 .testimonial > p{
@@ -886,7 +886,7 @@ body.section-switching.up .animation-block{
 	height:6px;
 	width:36px;
 	margin-right:7px;
-	background:#303F9F;
+	background:rgb(155, 35, 135);
 	opacity:.4;
 }
 .testimonials-slider .owl-controls .owl-dot.active > span{
@@ -958,7 +958,7 @@ body.section-switching.up .animation-block{
 	bottom:0;
 	right:-10px;
 	left:-10px;
-	background:#303F9F;
+	background:rgb(155, 35, 135);
 	opacity:.9;
 	-webkit-transform:rotate(0deg) scale(0);
 	-moz-transform:rotate(0deg) scale(0);
@@ -1016,7 +1016,7 @@ body.section-switching.up .animation-block{
 }
 /*== Project Popup ==*/
 .mfp-bg{
-	background:#303F9F;
+	background:rgb(155, 35, 135);
 }
 .my-mfp-zoom-in .zoom-anim-dialog {
 	opacity: 0;
@@ -1182,7 +1182,7 @@ body.section-switching.up .animation-block{
 	transition:none;
 }
 .form-control:focus{
-	border-color:#303F9F;
+	border-color:rgb(155, 35, 135);
 }
 .contact-form .btn-custom{
 	padding:19px 35px;
@@ -1274,8 +1274,8 @@ body.loaded #preloader .loader{
 	height:140px;
 	width:140px;
 	border:solid 4px #FFF;
-	border-top-color:#303F9F;
-	border-right-color:#303F9F;
+	border-top-color:rgb(155, 35, 135);
+	border-right-color:rgb(155, 35, 135);
 	border-radius:50%;
 	position:absolute;
 	top:50%;
