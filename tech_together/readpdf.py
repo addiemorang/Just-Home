@@ -5,6 +5,18 @@ from nltk.corpus import brown, stopwords
 from nltk.cluster.util import cosine_distance
 from operator import itemgetter
 import re
+from google.cloud import translate
+import os
+
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = '/Users/addiemorang/Documents/GitHub/addiemorang.github.io/tech_together/cred.json'
+
+def translate_pdf(pdf_name, lang):
+    pdf_sents = get_text_from_lease(pdf_name)
+    translated_file = open('translated.txt', "w")
+    client = translate.Client()
+    for s in pdf_sents:
+        print('writing...')
+        translated_file.write(client.translate(s, source_language='en', target_language=lang)['translatedText'])
 
 np.seterr(divide='ignore', invalid='ignore')
 
@@ -104,18 +116,18 @@ def clean_text(): # returns cleaned up version of text
     return 0
 
 def search_phrase(text, phrase):
+    found = []
     result = re.search(phrase, text)
     if (result is not None):
-        print (result.string)
-
-
+        found.append(result.string)
+    return found
 
 if __name__ == "__main__":
     pdf_name = input("what is the filepath of your pdf lease document? ")
-    sentences = get_text_from_lease(pdf_name)
-    num = int(input("how many sentences do you want in your lease summary? "))
-    for idx, sentence in enumerate(text_rank(sentences, stop_words=stopwords.words('english'), top_n = num)):
-        print("%s. %s" % ((idx + 1), ''.join(sentence)))
+    #sentences = get_text_from_lease(pdf_name)
+    #num = int(input("how many sentences do you want in your lease summary? "))
+    #for idx, sentence in enumerate(text_rank(sentences, stop_words=stopwords.words('english'), top_n = num)):
+    #    print("%s. %s" % ((idx + 1), ''.join(sentence)))
 
     dict_syn = {'tenant':'lessee',
         'lessee': 'tenant',
@@ -150,8 +162,10 @@ if __name__ == "__main__":
         'no warranty of habitability':'habitability',
         'upon payment of sums':'habitability'}
 
-    for c in dict_categories:
-        phrase = c
-        sample = 'include a clause which exculpates or indemnifies the landlord from any and all liability, for example, by providing that “the tenant shall indemnify and hold landlord harmless from any and all claims or assertions of every kind and nature.'
+    #for c in dict_categories:
+    #    phrase = c
+    #    sample = 'include a clause which exculpates or indemnifies the landlord from any and all liability, for example, by providing that “the tenant shall indemnify and hold landlord harmless from any and all claims or assertions of every kind and nature.'
+    #    if (len(search_phrase(sample,phrase))>0):
+    #        print(search_phrase(sample,phrase))
 
-        search_phrase(sample,phrase)
+    translate_pdf(pdf_name, 'es')
