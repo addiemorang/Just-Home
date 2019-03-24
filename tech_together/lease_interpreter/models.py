@@ -5,7 +5,7 @@ from django.utils import timezone
 
 
 class Lease(models.Model):
-    pdf = models.FileField(upload_to='leases/pdfs/')
+    pdf = models.FileField(upload_to='leases/list')
 
 
 
