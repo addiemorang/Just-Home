@@ -10,10 +10,10 @@ from google.cloud import translate
 import os
 import csv
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = '/Users/addiemorang/Documents/GitHub/addiemorang.github.io/tech_together/cred.json'
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = '/Users/addiemorang/Documents/GitHub/techtogether_project/tech_together/cred.json'
 
 def translate_pdf(pdf_name):
-    user_lang = (input("What language would you like to translate your lease to? ")).lower()
+    user_lang = input("What language would you like to translate your lease to? ")
     lang_dict = get_language_dict()
     try:
         lang_code = lang_dict.get(user_lang)
@@ -23,7 +23,6 @@ def translate_pdf(pdf_name):
         for s in pdf_sents:
             print('writing...')
             translated_file.write(client.translate(s, source_language='en', target_language=lang_code)['translatedText'])
-
     except:
         print("Error: language not found/supported.")
 
@@ -31,7 +30,7 @@ def translate_pdf(pdf_name):
 def get_language_dict():
     with open('languages.csv', mode='r') as infile:
         reader = csv.reader(infile)
-        lang_dict = {rows[0].lower():rows[1].lower() for rows in reader}
+        lang_dict = {rows[0]:rows[1] for rows in reader}
     return lang_dict
 
 
@@ -237,6 +236,7 @@ def clarify_rights(violations, num_violations):
 
 if __name__ == "__main__":
     pdf_name = input("what is the filepath of your pdf lease document? ")
+    translate_pdf(pdf_name)
     sentences = get_text_from_lease(pdf_name)
     num = 10 # number of summary points
     summary = '\n\n\nSUMMARY OF IMPORTANT PARTS OF YOUR LEASE:\n '

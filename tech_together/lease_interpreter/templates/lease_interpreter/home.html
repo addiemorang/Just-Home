@@ -76,19 +76,19 @@
 
                     <li>
                         <a href='#about' class='section-toggle' data-section='about'>
-                            Upload your lease
+                            Upload Your Lease
                         </a>
                     </li>
 
                     <li>
                         <a href='#resume' class='section-toggle' data-section='resume'>
-                            Your Rights
+                            Learn About Your Rights
                         </a>
                     </li>
 
                     <li>
                         <a href='#portfolio' class='section-toggle' data-section='portfolio'>
-                            Legal Aid
+                            Housing Resources
                         </a>
                     </li>
 
@@ -123,24 +123,24 @@
                         <div class='inner'>
                             <div class='intro-text'>
 
-                                <h1>Just Home</h1>
+                                <img src="media/justhome.png" alt="logo" >
 
                                 <p>
-                                   for equitable housing
+                                   for an equitable community
                                 </p>
 
                                 <div class='intro-btns'>
 
                                     <a href='#about' class='btn-custom section-toggle' data-section='about'>
-                                        Share
+                                        Upload Your Lease
                                     </a>
 
                                     <a href='#resume' class='btn-custom section-toggle' data-section='resume'>
-                                        Learn
+                                        Learn Your Rights
                                     </a>
 
                                     <a href='#portfolio' class='btn-custom section-toggle' data-section='portfolio'>
-                                        Act
+                                        Connect With Resources
                                     </a>
 
                                 </div>
@@ -224,7 +224,7 @@
                                         <button type="submit" class='btn-custom btn-color' href='#resume'>Upload</button>
                                     </form>
                                     <p></p>
-                                    <a href='#' type="submit" class='btn-custom btn-color'>
+                                    <a href='#resume' type="submit" class='section-toggle btn-custom btn-color' data-section='resume'>
                                         Translate your lease
                                     </a>
 
@@ -251,13 +251,20 @@
 
                         <div class='section-header'>
 
+
                             <h2>Your <strong class='color'>Lease</strong></h2>
 
                         </div>
+
+                          <a href="media/translated.txt" download>Download Your Lease Translation</a>
+
                         <h3>Summary</h3>
+
+
                         <ul class='timeline'>
 
                             <li>
+
 
                                 <div class='timeline-content'>
 
@@ -1152,13 +1159,14 @@
                                             infoWindow = new google.maps.InfoWindow({
                                                 content: problemString
                                             });
-                                            infoWindow.open(map, marker);
                                             marker.setMap(map);
+
                                             marker.addListener('click', function () {
                                                 infowindow.open(map, marker);
                                             });
                                         }
-                                    }
+
+                                }
                                 </script>
                                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBX9GFC7YWEnEBGM6aWQic5tq7OZ91jwFM&libraries=drawing&callback=initMap">
                           // <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBX9GFC7YWEnEBGM6aWQic5tq7OZ91jwFM&callback=initMap">'
