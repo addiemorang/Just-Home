@@ -5,7 +5,7 @@ from django import forms
 from .forms import LeaseForm
 from .models import Lease
 # Create your views here.
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 
 def home(request):
     if request.method == 'POST' and request.FILES['myfile']:
@@ -13,9 +13,7 @@ def home(request):
         fs = FileSystemStorage()
         filename = fs.save(myfile.name, myfile)
         uploaded_file_url = fs.url(filename)
-        return render(request, 'lease_interpreter/home.html', {
-            'uploaded_file_url': uploaded_file_url
-        })
+        return HttpResponseRedirect('/home#resume')
     return render(request, 'lease_interpreter/home.html')
 
 
