@@ -35,14 +35,13 @@ def get_language_dict():
 
 
 np.seterr(divide='ignore', invalid='ignore')
+num_violations = 0
 
 def pagerank(A, eps=0.0001, d=0.85):
     if len(A) > 0:
         P = np.ones(len(A)) / len(A)
     while True:
         new_P = np.ones(len(A)) * (1 - d) / len(A) + d * A.T.dot(P)
-        print(new_P)
-    #    new_P = .001
         delta = abs(new_P - P).sum()
         if delta <= eps:
             return new_P
@@ -117,12 +116,12 @@ def split_sentences(text):
     return sentences
 
 def get_text_from_lease(pdf_name):
-    pdf = open('blanklease.pdf', 'rb')
+    pdf = open(pdf_name, 'rb')
     pdf_reader = PyPDF2.PdfFileReader(pdf)
     num_pages = pdf_reader.numPages
     lease_text = ''
     for i in range(num_pages):
-        lease_text += pdf_reader.getPage(i).extractText()
+        lease_text += pdf_reader.getPage(i).extractText().replace('lessor', 'landlord').replace('Lessor', 'landlord').replace('lessee', 'tenant').replace('Lessee', 'tenant')
     sentence_list = split_sentences(lease_text)
     return sentence_list
 
@@ -135,40 +134,67 @@ def search_phrase(text, phrase):
     found = []
     result = re.search(phrase, text)
     if (result is not None):
-        found.append(result.string)
-    return found
+        return True
+        #print(result.string)
+    return False
+
+def find_violations(sentences, dict):
+    violation_map = {'liability': [], 'habitability':[], 'quiet enjoyment':[], 'maintenance':[], 'payment':[], 'termination':[], 'right to enter':[]}
+    for sentence in sentences:
+        for phrase, category in dict.items():
+            contains_phrase = search_phrase(sentence, phrase)
+            if contains_phrase:
+                num_violations += 1
+                violation_map[category].append(sentence)
+    return violation_map
+
+def clarify_rights(violations):
+    response = 'Newsflash: as a tenant, you have rights!\n'
+    response += 'We have reviewed your lease for possible violations in the following categories: \n(1) Landlord’s liability for loss or damage \n(2) The Warranty of Habitability and the Covenant on Quiet Enjoyment \n(3) Maintenance and Repair \n(4) Payments and Fees \n(5) Termination of Tenancy and Eviction \n(6) Landlord’s Right of Entry\n\n'
+    response += 'Your lease looks'
+    if num_violations == 0:
+        response += ' good, as far as we can tell, with no obvious legal violations. Still, let\'s review your rights!\n'
+    elif num_violations < 3:
+        response += ' fair, with 1-2 possible legal violations. Let\'s review your rights as a tenant!\n'
+    else:
+        response += ' poor, with more than 3 possible legal violations. Let\'s review your rights as a tenant!\n'
+
+
+    response += '(1) LANDLORD\'S LIABILITY FOR LOSS OR DAMAGE'
+    response += '\n\tG.L.c. 186, §15 prohibits a landlord from waiving her liability for injuries, loss or damage, caused to tenants or third parties by her negligence, omission, or misconduct.\n'
+    if violations['liability'] != []:
+        response += '\tYour lease may contain a waiver of your landlord\'s liability for damages.'
+        response += '\tCheck the following passage(s) for possible violations:\n'
+        for passage in violations['liability']:
+            response += passage + '\n'
+    else:
+        response += '\tYour lease does not seem to absolve the landlord of all liability for damage, which is good!\n\n'
+
+    response += '(2) WARRANTY OF HABITABILITY and COVENANT ON QUIET ENJOYMENT\n'
+    response += '\tIn its landmark decision in Boston Housing Authority v. Hemingway, the Massachusetts Supreme Judicial Court determined that when a landlord rents a residential unit under a written or oral lease, she makes an “implied warranty that the premises are fit for human occupation.\n'
+    if violations['habitability'] != []:
+        response += '\tYour lease may contradict the warranty of habitability, either by asking you, the tenant, to verify that the apartment is fit for habitation (while really the landlord must agree to this), or in another way. Check the below passage(s) for possible violations:\n'
+        for passage in violations['habitability']:
+            response += passage + '\n'
+    else:
+        response += 'Your lease does not appear to contradict the warranty of habitability. (Note that even if it is not explicitly stated, it is implied under MA law). When your landlord rents to you, they are making an implied warranty that the premises are fit for human occupation and that there are no health and safety violations at the time of rental.'
+    response += 'Since the warranty of habitability legally holds for all leases in MA. If your landlord does not keep your apartment in livable condition they have broken the warranty of habitation, and you may pursue legal action. See more info here: https://www.masslegalhelp.org/housing/lt1-chapter-13-filing-civil-lawsuit'
+
+    return response
+
 
 if __name__ == "__main__":
     pdf_name = input("what is the filepath of your pdf lease document? ")
-    #sentences = get_text_from_lease(pdf_name)
-    #num = int(input("how many sentences do you want in your lease summary? "))
-    #for idx, sentence in enumerate(text_rank(sentences, stop_words=stopwords.words('english'), top_n = num)):
-    #    print("%s. %s" % ((idx + 1), ''.join(sentence)))
+    sentences = get_text_from_lease(pdf_name)
+    num = int(input("how many sentences do you want in your lease summary? "))
+    print('\n\n\nSummary of important parts of your lease: ')
+    for idx, sentence in enumerate(text_rank(sentences, stop_words=stopwords.words('english'), top_n = num)):
+        print("%s. %s" % ((idx + 1), ''.join(sentence)))
 
-    dict_syn = {'tenant':'lessee',
-        'lessee': 'tenant',
-        'landlord': 'property owner',
-        'property owner' : 'landlord',
-        'landlord': 'proprietor',
-        'proprietor':'landlord',
-        'landlord':'freeholder',
-        'freeholder':'landlord',
-        'dweller':'tenant',
-        'tenant': 'dweller',
-        'holder':'tenant',
-        'tenant':'holder',
-        'inhabitant':'tenant',
-        'tenant':'inhabitant',
-        'occupant':'tenant',
-        'tenant':'occupant',
-        'renter':'tenant',
-        'tenant':'renter',
-         'tenant':'resident',
-         'resident': 'tenant',
-         'leaseholder':'tenant',
-         'tenant':'leaseholder'}
+    print('\n\n')
 
     dict_categories = {'hold landlord harmless': 'liability',
+        'hold the landlord harmless': 'liability',
         'tenant shall indemnify': 'liability',
         'no implied warranty': 'liability',
         'tenant accepts the unit': 'habitability',
@@ -176,12 +202,10 @@ if __name__ == "__main__":
         'unit as is condition':'habitability',
         'tenant warrants habitable condition': 'habitability',
         'no warranty of habitability':'habitability',
-        'upon payment of sums':'habitability'}
+        'upon payment of sums':'habitability'
+    }
 
-    #for c in dict_categories:
-    #    phrase = c
-    #    sample = 'include a clause which exculpates or indemnifies the landlord from any and all liability, for example, by providing that “the tenant shall indemnify and hold landlord harmless from any and all claims or assertions of every kind and nature.'
-    #    if (len(search_phrase(sample,phrase))>0):
-    #        print(search_phrase(sample,phrase))
-
-    translate_pdf(pdf_name)
+    violations = find_violations(sentences, dict_categories)
+    response = clarify_rights(violations)
+    print(response)
+        #search_phrase(sample,phrase)
