@@ -212,24 +212,25 @@ def clarify_rights(violations):
     else:
         response += 'Your lease does not seem to contain any unenforceable clauses.\n'
 
-    ##############
+    #############
     response += '(6) TERMINATION OF TENANCY AND EVICTION'
-    response += ''
+    response += 'Since 1969, a landlord is required to give a 14 days’ notice in writing before terminating the lease due to non-payment of rent. A landlord is also prohibited from waiving the tenant’s right to cure the nonpayment by paying the amount owed within the statutory reinstatement period.\n'
     if violations ['termination'] != []:
-        response += ''
+        response += 'Your lease may violate the clause that 14 days notice are needed in the event of a landlord wishing to evict you for non-payment of rent. For instance, the GBREB (ID RH201) form stipulates, under a provision titled \“Non-Performance or Breach by Lessee\”, that \“the Lessor […] may (subject to the Lessee\’s rights under applicable law) terminate this lease by: […] a fourteen day written notice to the Lessee to vacate said leases premises\”, without mentioning the lessee\’s right to cure the breach by paying rent. Similarly, the GBREB (ID RH206) form merely states that in the case of tenant\’s failure to pay rent, \“the termination will become effective fourteen days after the notice is given. Your lease may be omitting the information that you can stop any eviction by paying the amount of rent owed before the 14 day period you are given is over. Be aware of this even though it is not mentioned in your lease!\n'
         for passage in violations['termination']:
             response += passage + '\n'
     else:
-        response += ' \n'
-    #################
+        response += 'Your lease appears to fully inform you of your rights in the event of an attempted eviction.\n'
+
+    ##########
     response += '(7) LANDLORD\'S RIGHT OF ENTRY'
-    response += 'Since 1969, a landlord is required to give a 14 days’ notice in writing before terminating the lease due to non-payment of rent. A landlord is also prohibited from waiving the tenant’s right to cure the nonpayment by paying the amount owed within the statutory reinstatement period.\n'
+    response += 'The MA Legislature chose to restrict the landlord\’s right of access to the premises for the limited purposes set forth in the statute: to inspect the premises, make repairs, or show them to a prospective tenant, purchaser, mortgagee or its agents.\n'
     if violations ['entry'] != []:
-        response += 'Your lease may violate the clause that 14 days notice are needed in the event of a landlord wishing to evict you for non-payment of rent. For instance, the GBREB (ID RH201) form stipulates, under a provision titled \“Non-Performance or Breach by Lessee\”, that \“the Lessor […] may (subject to the Lessee\’s rights under applicable law) terminate this lease by: […] a fourteen day written notice to the Lessee to vacate said leases premises\”, without mentioning the lessee\’s right to cure the breach by paying rent. Similarly, the GBREB (ID RH206) form merely states that in the case of tenant\’s failure to pay rent, \“the termination will become effective fourteen days after the notice is given. Your lease may be omitting the information that you can stop any eviction by paying the amount of rent owed before the 14 day period you are given is over. Be aware of this even though it is not mentioned in your lease!\n'
+        response += 'Your lease violates MA law by stating your landlord can enter your apartment for any reason.\n'
         for passage in violations['entry']:
             response += passage + '\n'
     else:
-        response += 'Your lease appears to fully inform you of your rights in the event of an attempted eviction.\n'
+        response += 'Your lease appears to follow MA law by stating that your landlord needs permission to enter your premises and for limited purposes.\n'
 
     return response
 
