@@ -238,7 +238,7 @@ def clarify_rights(violations, num_violations):
 if __name__ == "__main__":
     pdf_name = input("what is the filepath of your pdf lease document? ")
     sentences = get_text_from_lease(pdf_name)
-    num = 20
+    num = 10 # number of summary points
     summary = '\n\n\nSUMMARY OF IMPORTANT PARTS OF YOUR LEASE:\n '
     for idx, sentence in enumerate(text_rank(sentences, stop_words=stopwords.words('english'), top_n = num)):
         summary += '(' + str(idx+1) + ') ' + sentence + '\n'
