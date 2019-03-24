@@ -1,5 +1,5 @@
 <b>dependencies:</b>
-PyPDF2
-google-cloud-translate
-nltk
-numpy
+<br>PyPDF2
+<br>google-cloud-translate
+<br>nltk
+<br>numpy
