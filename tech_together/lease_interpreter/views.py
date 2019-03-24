@@ -91,7 +91,6 @@ def get_language_dict():
 
 
 np.seterr(divide='ignore', invalid='ignore')
-num_violations = 0
 
 
 def pagerank(A, eps=0.0001, d=0.85):
@@ -203,6 +202,7 @@ def search_phrase(text, phrase):
 
 
 def find_violations(sentences, dict):
+    num_violations = 0
     violation_map = {'liability': [], 'habitability': [], 'quiet enjoyment': [
     ], 'maintenance': [], 'payment': [], 'termination': [], 'entry': []}
     for sentence in sentences:
@@ -211,10 +211,10 @@ def find_violations(sentences, dict):
             if contains_phrase:
                 num_violations += 1
                 violation_map[category].append(sentence)
-    return violation_map
+    return violation_map, num_violations
 
 
-def clarify_rights(violations):
+def clarify_rights(violations, num_violations):
     response = 'Newsflash: as a tenant, you have rights!\n'
     response += 'We have reviewed your lease for possible violations in the following categories: \n(1) Landlord’s liability for loss or damage \n(2) The Warranty of Habitability and the Covenant on Quiet Enjoyment \n(3) Maintenance and Repair \n(4) Payments and Fees \n(5) Termination of Tenancy and Eviction \n(6) Landlord’s Right of Entry\n\n'
     response += 'Your lease looks'
@@ -353,8 +353,8 @@ def main(url):
                        'pay reasonable attorney fee': 'payment'
                        }
 
-    violations = find_violations(sentences, dict_categories)
-    response = clarify_rights(violations)
+    violations, num_violations = find_violations(sentences, dict_categories)
+    response = clarify_rights(violations, num_violations)
     return {
             "response": response,
             "summary": "here is a test"
