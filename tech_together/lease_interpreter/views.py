@@ -9,7 +9,7 @@ from nltk.corpus import brown, stopwords
 import numpy as np
 import nltk
 import PyPDF2
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.core.files.storage import FileSystemStorage
 from django import forms
 from .forms import LeaseForm
@@ -17,14 +17,14 @@ from .models import Lease
 # Create your views here.
 from django.http import HttpResponseRedirect
 
-__name__ = "hello"
+responseSummary = "hi"
 def home(request):
     if request.method == 'POST' and request.FILES['myfile']:
         myfile = request.FILES['myfile']
         fs = FileSystemStorage()
         filename = fs.save(myfile.name, myfile)
         uploaded_file_url = fs.url(filename)
-        main("tech_together/media/"+filename)
+        response = main("tech_together/media/"+filename)
         return HttpResponseRedirect('/home#resume')
     return render(request, 'lease_interpreter/home.html')
 
