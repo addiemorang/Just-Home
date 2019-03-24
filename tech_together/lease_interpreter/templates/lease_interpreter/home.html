@@ -95,7 +95,7 @@
 
                     <li>
                         <a href='#contact' class='section-toggle' data-section='contact'>
-                            Contact
+                            About
                         </a>
                     </li>
 
@@ -211,19 +211,20 @@
 
                                 <div class='about-text'>
                                     <p>
-                                        Click "Upload you lease" to have our program analyze the important clauses for you, in plain English
+                                        Upload you lease to have our program analyze the important clauses for you, in plain English
                                         (or whatever language you need!).
                                     </p>
 
                                 </div>
 
                                 <div class='about-btns'>
-                                    <form id="upload" method="post" enctype="multipart/form-data">
+                                    <form  id="upload" method="post" enctype="multipart/form-data">
                                         {% csrf_token %}
                                         <input type="file" name="myfile" class='btn-custom btn-color'>
+                                        <p></p>
                                         <button type="submit" class='btn-custom btn-color' href='#resume'>Upload</button>
                                     </form>
-
+                                    <p></p>
                                     <a href='#' type="submit" class='btn-custom btn-color'>
                                         Translate your lease
                                     </a>
@@ -261,7 +262,7 @@
 
                                 <div class='timeline-content'>
 
-                                    <h4>CSS College Larkana</h4>
+                                    <h4>Summary</h4>
 
                                     <em>
                                         <span>Masters Degree</span>
@@ -269,9 +270,7 @@
                                     </em>
 
                                     <p>
-                                        Lorem ipsum dolor sit amet, id electram reprimique his, dicta saepe oporteat
-                                        eos an, esse erat doming at lam. Nec quodsi suscipiantur an, ad graece nemore
-                                        ocurreret lam, agam ipsum meliore quo ut.
+                                       {{ summary }}
                                     </p>
 
                                 </div>
@@ -282,7 +281,7 @@
 
                                 <div class='timeline-content'>
 
-                                    <h4>CSS College Larkana</h4>
+                                    <h4>Violations</h4>
 
                                     <em>
                                         <span>Masters Degree</span>
@@ -290,9 +289,7 @@
                                     </em>
 
                                     <p>
-                                        Lorem ipsum dolor sit amet, id electram reprimique his, dicta saepe oporteat
-                                        eos an, esse erat doming at lam. Nec quodsi suscipiantur an, ad graece nemore
-                                        ocurreret lam, agam ipsum meliore quo ut.
+                                        {{ responseSummary }}
                                     </p>
 
                                 </div>
@@ -704,7 +701,7 @@
 
 
             <!--=====================================================
-					Contact Section
+					About
 				=====================================================-->
             <section id='contact' class='section contact-section border-d'>
 
@@ -713,127 +710,28 @@
                     <div class='container-fluid'>
 
                         <div class='section-header'>
-                            <h2>Contact <strong class='color'>Me</strong></h2>
+                            <h2>About <strong class='color'>Just Home</strong></h2>
                         </div>
-
-
-                        <div class='row'>
-
-                            <div class='col-md-8'>
-
-                                <div class='contact-form'>
-
-                                    <form id='contact-form' data-toggle='validator' method='post' action='mail.php'>
-
-                                        <div id='contact-form-result'></div>
-
-                                        <div class='row'>
-
-                                            <div class='col-md-6'>
-                                                <div class='form-group'>
-
-                                                    <input type='text' class='form-control' placeholder='Name' name='name'
-                                                        required>
-                                                    <div class='help-block with-errors'></div>
-
-                                                </div>
-                                            </div>
-
-                                            <div class='col-md-6'>
-                                                <div class='form-group'>
-
-                                                    <input type='email' class='form-control' placeholder='Email' name='email'
-                                                        required>
-                                                    <div class='help-block with-errors'></div>
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class='form-group'>
-
-                                            <input type='text' class='form-control' placeholder='Subject' name='subject'
-                                                required>
-                                            <div class='help-block with-errors'></div>
-
-                                        </div>
-
-                                        <div class='form-group'>
-
-                                            <textarea class='form-control' placeholder='Message' name='message' rows='5'
-                                                required></textarea>
-                                            <div class='help-block with-errors'></div>
-
-                                        </div>
-
-                                        <div class='form-group text-center'>
-                                            <button type='submit' class='btn-custom btn-color'>
-                                                Send Message
-                                            </button>
-                                        </div>
-
-                                    </form>
-
-                                </div>
-
-
-                            </div>
-
-                            <div class='col-md-4'>
-
-                                <div class='contact-info-icons'>
-
-                                    <div class='contact-info'>
-
-                                        <i class='ion-ios-location-outline'></i>
-
-                                        <p>
-                                            1254 Patterson Street<br>
-                                            Houston, TX 77025
-                                        </p>
-
-                                    </div>
-
-
-                                    <div class='contact-info'>
-
-                                        <i class='ion-ios-telephone-outline'></i>
-
-                                        <p>
-                                            (+123) 713-295-4383<br>
-                                            (+123) 913-295-2583
-                                        </p>
-
-                                    </div>
-
-
-                                    <div class='contact-info'>
-
-                                        <i class='ion-android-globe'></i>
-
-                                        <p>
-                                            www.google.com<br>
-                                            www.example.com
-                                        </p>
-
-                                    </div>
-
-
-
-
-                                </div>
-
-
-
-                            </div>
-
-
+                        <div>
+                            <h3>Why we matter</h3>
+                            <h3></h3>
                         </div>
+                            <p>
+                                As tenants are usually ignorant of landlord-tenant law and rarely read or take into account the leases they sign,
+                                landlords are incentivized to continuously use unenforceable and misleading clauses (UMCs) in their leases.
+                            </p>
+                            <p>
+                                Harvard Law School conducted a study of 70 leases from the Boston Metropolitan Area. 97 percent of the leases contained
+                                at least one unenforceable clause which was illegal.
+                            </p>
+                            <p>
+                               
+                                In addition, in 2016, there were 15,708 evictions in the state of Massachusetts, an average of 43 per day.
+                                
+                                Just home was created to inform tenants about violations in their leases and to empower them to exercise their rights
+                                under Massachussetts law.
+                            </p>
 
-
-
-                    </div>
 
                 </div>
 
