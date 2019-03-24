@@ -1,0 +1,22 @@
+{% extends 'lease_interpreter/base.html' %}
+
+
+{% block content %}
+<h2>lease_list</h2>
+<table class="table">
+    <thread>
+        <tr>
+            <th>Lease</th>
+            <th>Analysis</th>
+            <th>Download</th>
+        </tr>
+    </thread>
+    <tbody>
+        {% for lease in leases %}
+            <tr>
+                <td>{{ lease.pdf }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

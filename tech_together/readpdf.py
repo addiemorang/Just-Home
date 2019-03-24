@@ -5,6 +5,34 @@ from nltk.corpus import brown, stopwords
 from nltk.cluster.util import cosine_distance
 from operator import itemgetter
 import re
+from google.cloud import translate
+import os
+import csv
+
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = '/Users/addiemorang/Documents/GitHub/addiemorang.github.io/tech_together/cred.json'
+
+def translate_pdf(pdf_name):
+    user_lang = (input("What language would you like to translate your lease to? ")).lower()
+    lang_dict = get_language_dict()
+    try:
+        lang_code = lang_dict.get(user_lang)
+        pdf_sents = get_text_from_lease(pdf_name)
+        translated_file = open('translated.txt', "w")
+        client = translate.Client()
+        for s in pdf_sents:
+            print('writing...')
+            translated_file.write(client.translate(s, source_language='en', target_language=lang_code)['translatedText'])
+
+    except:
+        print("Error: language not found/supported.")
+
+
+def get_language_dict():
+    with open('languages.csv', mode='r') as infile:
+        reader = csv.reader(infile)
+        lang_dict = {rows[0].lower():rows[1].lower() for rows in reader}
+    return lang_dict
+
 
 np.seterr(divide='ignore', invalid='ignore')
 num_violations = 0
@@ -103,6 +131,7 @@ def clean_text(): # returns cleaned up version of text
     return 0
 
 def search_phrase(text, phrase):
+    found = []
     result = re.search(phrase, text)
     if (result is not None):
         return True
