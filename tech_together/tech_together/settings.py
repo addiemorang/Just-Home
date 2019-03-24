@@ -25,13 +25,7 @@ SECRET_KEY = '^_vjdkp7q1y_)u1bdgz$-%+zlm_a(0#bv-!d-h4md!yylh%awp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ 
-                'wingardl.pythonanywhere.com',
-                'www.wingardl.pythonanywhere.com',
-                '.pythonanywhere.com'
-                'addiemorang.github.io',
-                '127.0.0.1'
-]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -69,12 +63,8 @@ WSGI_APPLICATION = 'tech_together.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'tt-db',
-    }
-}
+#DATABASES = {
+#
 
 
 # Password validation

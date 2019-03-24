@@ -95,7 +95,7 @@
 
                     <li>
                         <a href='#contact' class='section-toggle' data-section='contact'>
-                            Contact
+                            About
                         </a>
                     </li>
 
@@ -211,19 +211,20 @@
 
                                 <div class='about-text'>
                                     <p>
-                                        Click "Upload you lease" to have our program analyze the important clauses for you, in plain English
+                                        Upload you lease to have our program analyze the important clauses for you, in plain English
                                         (or whatever language you need!).
                                     </p>
 
                                 </div>
 
                                 <div class='about-btns'>
-                                    <form id="upload" method="post" enctype="multipart/form-data">
+                                    <form  id="upload" method="post" enctype="multipart/form-data">
                                         {% csrf_token %}
                                         <input type="file" name="myfile" class='btn-custom btn-color'>
+                                        <p></p>
                                         <button type="submit" class='btn-custom btn-color' href='#resume'>Upload</button>
                                     </form>
-
+                                    <p></p>
                                     <a href='#' type="submit" class='btn-custom btn-color'>
                                         Translate your lease
                                     </a>
