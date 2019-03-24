@@ -123,26 +123,24 @@
                         <div class='inner'>
                             <div class='intro-text'>
 
-                                <h1>I'm John Doe</h1>
+                                <h1>Just Home</h1>
 
                                 <p>
-                                    A Friend, Dude and Buddy From Earth
+                                   for equitable housing
                                 </p>
 
                                 <div class='intro-btns'>
-                                    <form method="post" enctype="multipart/form-data">
-                                        {% csrf_token %}
-                                        <input type="file" name="myfile" class='btn-custom section-toggle'>
-                                        <button type="submit" class='btn-custom section-toggle'>Upload</button>
-                                    </form>
                                     
-                                    {% if uploaded_file_url %}
-                                    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
-                                    {% endif %}
-    
+                                    <a href='#about' class='btn-custom section-toggle' data-section='about'>
+                                        Share
+                                    </a>
 
                                     <a href='#contact' class='btn-custom section-toggle' data-section='contact'>
-                                        Hire Me
+                                        Learn
+                                    </a>
+
+                                    <a href='#contact' class='btn-custom section-toggle' data-section='contact'>
+                                        Act
                                     </a>
 
                                 </div>
@@ -158,7 +156,7 @@
 
 
             <!--=====================================================
-					About Section
+					Share Section
 				=====================================================-->
             <section id='about' class='section about-section border-d'>
 
@@ -167,42 +165,43 @@
 
                         <div class='section-header'>
                             <h2>
-                                I'm a <strong class='color'>Programmer</strong>
+                                What's in your <strong class='color'>lease?</strong>
                             </h2>
                         </div>
 
                         <div class='row'>
 
-                            <div class='col-md-4'>
+                            <div class='col-md-6'>
 
                                 <ul class='info-list'>
 
                                     <li>
-                                        <strong>Name:</strong>
-                                        <span>John Doe</span>
+                                        <strong>Landlord’s liability for loss or damage</strong>
                                     </li>
 
                                     <li>
-                                        <strong>Job:</strong>
-                                        <span>Freelancer</span>
+                                        <strong>The Warranty of Habitability</strong>
                                     </li>
 
                                     <li>
-                                        <strong>Age:</strong>
-                                        <span>26 Years</span>
+                                        <strong>The Covenant on Quiet Enjoyment</strong>
                                     </li>
 
                                     <li>
-                                        <strong>Residence:</strong>
-                                        <span>United States</span>
+                                        <strong>Maintenance and Repair</strong>
                                     </li>
 
                                     <li>
-                                        <strong>Hometown:</strong>
-                                        <span>Dokri</span>
+                                        <strong>Payments and Fees</strong>
                                     </li>
 
+                                    <li>
+                                        <strong>Termination of Tenancy and Eviction</strong>
+                                    </li>
 
+                                    <li>
+                                        <strong>Landlord’s Right of Entry</strong>
+                                    </li>
 
                                 </ul>
 
@@ -212,35 +211,18 @@
 
                                 <div class='about-text'>
                                     <p>
-                                        Qui ne indoctum electram vituperatoribus. Eirmod tamquam efficiendi mei cu, eum
-                                        idque voluptatum ad, quo id tollit regione prompta. Cu probo iusto assentior
-                                        eos, usu summo perpetua ne. Te suas phaedrum ullamcorper has. Ea mei ponderum
-                                        rationibus dissentias. Inani phaedrum suavitate eu qui, vide aperiri facilis
-                                        est eu. Te appetere cotidieque pro, duo eu assum facete instructior, no autem
-                                        aeterno reprimique nec. Pri cu delectus adolescens, eruditi placerat cu sed,
-                                        zril nonumes forensibus in eam. Eam ne dolore diceret pericula, in vis numquam
-                                        pertinax. Vel ne dolorum eloquentiam, et vel senserit incorrupte neglegentur,
-                                        pro cu audiam ocurreret reprimique.
-                                    </p>
-
-                                    <p>
-                                        Qui ne indoctum electram vituperatoribus. Eirmod tamquam efficiendi mei cu, eum
-                                        idque voluptatum ad, quo id tollit regione prompta. Cu probo iusto assentior.
-                                        Qui ne indoctum electram vituperatoribus. Eirmod tamquam efficiendi mei cu, eum
-                                        idque voluptatum ad.
+                                        Click "Upload you lease" to have our program analyze the important clauses for you, in plain English
+                                        (or whatever language you need!).
                                     </p>
 
                                 </div>
 
                                 <div class='about-btns'>
-
-                                    <a href='#' class='btn-custom btn-color'>
-                                        Download Resume
-                                    </a>
-
-                                    <a href='#' class='btn-custom btn-color'>
-                                        Hire Me
-                                    </a>
+                                    <form method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <input type="file" name="myfile" class='btn-custom btn-color'>
+                                        <button type="submit" class='btn-custom btn-color'>Upload</button>
+                                    </form>
 
                                 </div>
 
@@ -249,309 +231,6 @@
                         </div>
 
                     </div>
-                </div>
-
-                <div class='section-block services-block'>
-
-                    <div class='container-fluid'>
-
-                        <div class='section-header'>
-
-                            <h2>My <strong class='color'>Services</strong></h2>
-
-                        </div>
-
-
-
-                        <div class='row'>
-
-                            <div class='col-md-4'>
-                                <div class='service'>
-
-                                    <div class='icon'>
-                                        <i class='icon-basic-photo'></i>
-                                    </div>
-
-                                    <div class='content'>
-
-                                        <h4>Photography</h4>
-
-                                        <p>
-                                            Ei constituam theophrastus per, sea dolorum disputationi in, vel menandri
-                                            suavitate similique in. Vide assum conceptam eum.
-                                        </p>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class='col-md-4'>
-                                <div class='service'>
-
-                                    <div class='icon'>
-                                        <i class='icon-basic-keyboard'></i>
-                                    </div>
-
-                                    <div class='content'>
-
-                                        <h4>Programming</h4>
-
-                                        <p>
-                                            Ei constituam theophrastus per, sea dolorum disputationi in, vel menandri
-                                            suavitate similique in. Vide assum conceptam eum.
-                                        </p>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class='col-md-4'>
-                                <div class='service'>
-
-                                    <div class='icon'>
-                                        <i class='ion-social-wordpress-outline'></i>
-                                    </div>
-
-                                    <div class='content'>
-
-                                        <h4>WordPress</h4>
-
-                                        <p>
-                                            Ei constituam theophrastus per, sea dolorum disputationi in, vel menandri
-                                            suavitate similique in. Vide assum conceptam eum.
-                                        </p>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-                <div class='section-block skills-block'>
-                    <div class='container-fluid'>
-
-                        <div class='section-header'>
-
-                            <h2>
-                                My <strong class='color'>Skills</strong>
-                            </h2>
-
-                        </div>
-
-                        <div class='row'>
-
-                            <div class='col-md-6'>
-
-                                <div class='skill'>
-
-                                    <h4>HTML/CSS</h4>
-
-                                    <div class='bar'>
-                                        <div class='percent' style='width:85%;'></div>
-                                    </div>
-
-                                </div>
-
-
-                                <div class='skill'>
-
-                                    <h4>php</h4>
-
-                                    <div class='bar'>
-                                        <div class='percent' style='width:90%;'></div>
-                                    </div>
-
-                                </div>
-
-
-                                <div class='skill'>
-
-                                    <h4>jQuery</h4>
-
-                                    <div class='bar'>
-                                        <div class='percent' style='width:75%;'></div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class='col-md-6'>
-
-                                <div class='skill'>
-
-                                    <h4>JavaScript</h4>
-
-                                    <div class='bar'>
-                                        <div class='percent' style='width:85%;'></div>
-                                    </div>
-
-                                </div>
-
-
-                                <div class='skill'>
-
-                                    <h4>WordPress</h4>
-
-                                    <div class='bar'>
-                                        <div class='percent' style='width:90%;'></div>
-                                    </div>
-
-                                </div>
-
-
-                                <div class='skill'>
-
-                                    <h4>SEO</h4>
-
-                                    <div class='bar'>
-                                        <div class='percent' style='width:75%;'></div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                </div>
-
-                <div class='section-block pricing-block'>
-
-                    <div class='section-header'>
-                        <h2>My <strong class='color'>Pricing</strong></h2>
-                    </div>
-
-
-                    <div class='row'>
-
-                        <div class='col-md-4'>
-
-                            <div class='p-table'>
-
-                                <div class='header'>
-
-                                    <h4>Basic</h4>
-
-                                    <div class='price'>
-                                        <span class='currency'>$</span>
-                                        <span class='amount'>19</span>
-                                        <span class='period'>/HR</span>
-                                    </div>
-
-
-                                </div>
-
-                                <ul class='items'>
-                                    <li>
-                                        App Designing
-                                    </li>
-                                    <li>
-                                        App Development
-                                    </li>
-                                    <li>
-                                        Web Development
-                                    </li>
-                                </ul>
-
-                                <a href='#' class='btn-custom btn-color'>
-                                    Choose This
-                                </a>
-
-                            </div>
-
-                        </div>
-
-                        <div class='col-md-4'>
-
-                            <div class='p-table'>
-
-                                <div class='header'>
-
-                                    <h4>Pro</h4>
-
-                                    <div class='price'>
-                                        <span class='currency'>$</span>
-                                        <span class='amount'>29</span>
-                                        <span class='period'>/HR</span>
-                                    </div>
-
-
-                                </div>
-
-                                <ul class='items'>
-                                    <li>
-                                        App Designing
-                                    </li>
-                                    <li>
-                                        App Development
-                                    </li>
-                                    <li>
-                                        Web Development
-                                    </li>
-                                </ul>
-
-                                <a href='#' class='btn-custom btn-color'>
-                                    Choose This
-                                </a>
-
-                            </div>
-
-                        </div>
-
-                        <div class='col-md-4'>
-
-                            <div class='p-table'>
-
-                                <div class='header'>
-
-                                    <h4>Gold</h4>
-
-                                    <div class='price'>
-                                        <span class='currency'>$</span>
-                                        <span class='amount'>39</span>
-                                        <span class='period'>/HR</span>
-                                    </div>
-
-
-                                </div>
-
-                                <ul class='items'>
-                                    <li>
-                                        App Designing
-                                    </li>
-                                    <li>
-                                        App Development
-                                    </li>
-                                    <li>
-                                        Web Development
-                                    </li>
-                                </ul>
-
-                                <a href='#' class='btn-custom btn-color'>
-                                    Choose This
-                                </a>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-
                 </div>
 
             </section>
