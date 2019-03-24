@@ -218,7 +218,7 @@
                                 </div>
 
                                 <div class='about-btns'>
-                                    <form method="post" enctype="multipart/form-data">
+                                    <form id="upload" method="post" enctype="multipart/form-data">
                                         {% csrf_token %}
                                         <input type="file" name="myfile" class='btn-custom btn-color'>
                                         <button type="submit" class='btn-custom btn-color' href='#resume'>Upload</button>
@@ -853,7 +853,6 @@
     <script src='{{ STATIC_URL }}js/jquery.magnific-popup.min.js'></script>
     <script src='{{ STATIC_URL }}js/validator.min.js'></script>
     <script src='{{ STATIC_URL }}js/script.js'></script>
-
 </body>
 
 </html>
