@@ -1,0 +1,679 @@
+<body>
+
+
+
+
+    <script>
+
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 42.354331, lng: -71.072119 },
+
+                zoom: 12,
+                height: 300,
+                width: 230,
+                styles: [
+                    {
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#ebe3cd"
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#523735"
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "color": "#f5f1e6"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "color": "#c9b2a6"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative.land_parcel",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "color": "#dcd2be"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative.land_parcel",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#ae9e90"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape.natural",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#dfd2ae"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#dfd2ae"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#93817c"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi.park",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#a5b076"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi.park",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#447530"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#f5f1e6"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#fdfcf8"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#f8c967"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "color": "#e9bc62"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway.controlled_access",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#e98d58"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway.controlled_access",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "color": "#db8555"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.local",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#806b63"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.line",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#dfd2ae"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.line",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#8f7d77"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.line",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "color": "#ebe3cd"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.station",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#dfd2ae"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#b9d3c2"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#92998d"
+                            }
+                        ]
+                    }
+                ]
+            });
+
+            //update();
+
+        
+
+function getJSONMarkers() {
+    const markers = [
+        {
+            "name": "Boston College Legal Services LAB",
+            "address": "885 Centre Street, Newton Center , MA 02459",
+            "phone": "617-552-0248",
+            "website": "https://www.bc.edu/bc-web/schools/law/academics-faculty/experiential-learning/legal-services-LAB.html",
+            "lat": 42.332142,
+            "lng": -71.194359
+        },
+        {
+            "name": "Community Legal Aid – Northampton",
+            "address": "20 Hampton Avenue, Northampton , MA 01060",
+            "phone": "(413) 584-4034",
+            "website": "http://www.communitylegal.org",
+            "lat": 42.31788,
+            "lng": -72.6287
+        },
+        {
+            "name": "Community Legal Aid – Pittsfield",
+            "address": "152 North Street, E-155, Pittsfield , MA 01201",
+            "phone": "(413) 499-1950",
+            "website": "http://www.communitylegal.org",
+            "lat": 42.4508,
+            "lng": -73.25273
+        },
+        {
+            "name": "Community Legal Aid – Springfield",
+            "address": "One Monarch Place, Suite 400, Springfield , MA 01144",
+            "phone": "(413) 781-7814",
+            "website": "http://www.communitylegal.org",
+            "lat": 42.10219,
+            "lng": -72.59099
+        },
+        {
+            "name": "Community Legal Aid – Worcester",
+            "address": "405 Main Street, 4th floor, Worcester, MA 01608",
+            "phone": "(508) 752-3718",
+            "website": "http://www.communitylegal.org",
+            "lat": 42.26387,
+            "lng": -71.80163
+        },
+        {
+            "name": "De Novo ",
+            "address": "47 Thorndike Street, Suite SB-LL-1, Cambridge , MA 02141",
+            "phone": "(617) 661-1010",
+            "website": "http://www.denovo.org",
+            "lat": 42.37001,
+            "lng": -71.079613
+        },
+        {
+            "name": "GBLS/Cambridge (Cambridge Somerville Legal Services (CASLS))",
+            "address": "60 Gore Street, Suite 203, Cambridge , MA 02141",
+            "phone": "(617) 603-2700",
+            "website": "https://www.gbls.org/",
+            "lat": 42.37162,
+            "lng": -71.08035
+        },
+        {
+            "name": "Greater Boston Legal Services – Boston",
+            "address": "197 Friend St, Boston, MA 02114",
+            "phone": "(617) 371-1234",
+            "website": "https://www.gbls.org/",
+            "lat": 42.36422,
+            "lng": -71.06047
+        },
+        {
+            "name": "Harvard Legal Aid Bureau",
+            "address": "23 Everett St, Cambridge , MA 02138",
+            "phone": "617-495-4408",
+            "website": "http://www.harvardlegalaid.org/",
+            "lat": 42.38016,
+            "lng": -71.11796
+        },
+        {
+            "name": "Justice Center of Southeast Massachusetts LLC",
+            "address": "62 Main Street, Suite 302, Brockton, MA 02301",
+            "phone": "(508) 586-2110",
+            "website": "http://www.sccls.org",
+            "lat": 42.0845,
+            "lng": -71.01959
+        },
+        {
+            "name": "Lawyers Clearinghouse",
+            "address": "7 Winthrop Square, 2nd Floor, Boston, MA 02110",
+            "phone": "617-544-3434",
+            "website": "http://www.lawyersclearinghouse.org",
+            "lat": 42.35489,
+            "lng": -71.05806
+        },
+        {
+            "name": "Lawyers for Civil Rights",
+            "address": "61 Batterymarch Street, Boston, MA 02110",
+            "phone": "(617) 482-1145",
+            "website": "http://lawyersforcivilrights.org",
+            "lat": 42.35745,
+            "lng": -71.05388
+        },
+        {
+            "name": "Massachusetts Bar Association Dial-A-Lawyer Western Mass",
+            "address": "1441 Main St. Suite 925, Springfield, MA 01103",
+            "phone": "(413) 782-1659",
+            "website": "https://www.massbar.org/public/lawyer-referral-service",
+            "lat": 42.103191,
+            "lng": -72.590492
+        },
+        {
+            "name": "Massachusetts Fair Housing Center",
+            "address": "57 Suffolk Street, 4th floor, Holyoke, MA 01040",
+            "phone": "413-539-9796",
+            "website": "http://www.massfairhousing.org",
+            "lat": 42.20647,
+            "lng": -72.60909
+        },
+        {
+            "name": "MetroWest Legal Services",
+            "address": "63 Fountain Street, Suite 304, Framingham , MA 01702",
+            "phone": "508-620-1830",
+            "website": "https://www.mwlegal.org/",
+            "lat": 42.27596,
+            "lng": -71.42632
+        },
+        {
+            "name": "Northeast Legal Aid – Lawrence",
+            "address": "50 Island St., #203A, Lawrence, MA 01840",
+            "phone": "978-458-1465",
+            "website": "http://www.northeastlegalaid.org",
+            "lat": 42.70536,
+            "lng": -71.15104
+        },
+        {
+            "name": "Northeast Legal Aid – Lowell",
+            "address": "35 John Street, Suite 302, Lowell, MA 01852",
+            "phone": "978-458-1465",
+            "website": "http://www.northeastlegalaid.org",
+            "lat": 42.64588,
+            "lng": -71.3087
+        },
+        {
+            "name": "Northeast Legal Aid – Lynn",
+            "address": "181 Union Street, #201A, Lynn, MA 01901",
+            "phone": "978-458-1465",
+            "website": "http://www.northeastlegalaid.org",
+            "lat": 42.4669,
+            "lng": -70.94234
+        },
+        {
+            "name": "Pro Bono Legal Services Program at Housing Families Inc.",
+            "address": "919 Eastern Ave, Malden, MA 02148",
+            "phone": "(781) 322-9119",
+            "website": "http://housingfamilies.org/",
+            "lat": 42.42966,
+            "lng": -71.04401
+        },
+        {
+            "name": "South Coastal Counties Legal Services – Fall River",
+            "address": "22 Bedford St, 1st Floor, Fall River, MA 02720",
+            "phone": "(508) 676-6265",
+            "website": "http://www.sccls.org/",
+            "lat": 41.70217,
+            "lng": -71.15471
+        },
+        {
+            "name": "South Coastal Counties Legal Services – Hyannis",
+            "address": "460 West Main St, Hyannis, MA 02601",
+            "phone": "(508) 775-7020",
+            "website": "http://www.sccls.org/",
+            "lat": 41.6503,
+            "lng": -70.31282
+        },
+        {
+            "name": "South Coastal Counties Legal Services – New Bedford",
+            "address": "21 South Sixth St, New Bedford, MA 02740",
+            "phone": "(508) 979-7150",
+            "website": "http://www.sccls.org/",
+            "lat": 41.63279,
+            "lng": -70.92759
+        },
+        {
+            "name": "SouthCoast Fair Housing",
+            "address": "257 Union Street, New Bedford, MA 02740",
+            "phone": "(774) 473-8333",
+            "website": "http://southcoastfairhousing.org",
+            "lat": 41.63334,
+            "lng": -70.93457
+        },
+        {
+            "name": "Tenant Advocacy Project",
+            "address": "6 Everett Street, Cambridge, MA 02138",
+            "phone": "617-495-4394",
+            "website": "http://clinics.law.harvard.edu/tap/",
+            "lat": 42.37939,
+            "lng": -71.11916
+        },
+        {
+            "name": "Volunteer Lawyers Project of the Boston Bar Association",
+            "address": "7 Winthrop Square, 2nd Floor, Boston , MA 02110",
+            "phone": "(617) 423-0648",
+            "website": "https://www.vlpnet.or",
+            "lat": 42.35489,
+            "lng": -71.05806
+        },
+        {
+            "name": "Women's Bar Foundation",
+            "address": "27 School Street, Boston, MA 02108",
+            "phone": "617-973-6666",
+            "website": "http://womensbar.org",
+            "lat": 42.357738,
+            "lng": -71.059067
+        }
+    ];
+    return markers;
+}
+
+var blackStar = 'https://i.imgur.com/xckV6jl.png';
+
+var globalMap;
+function loadBaseMap() {
+    // Initialize Google Maps
+    const mapOptions = {
+        center: new google.maps.LatLng(42.3767, -71.2356),
+        zoom: 11
+    }
+
+    const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    globalMap = map;
+
+
+}
+
+var problemString;
+var infoWindow;
+
+// button.addEventListener('click', () => {
+const resourceMarkers = getJSONMarkers();
+// Initialize Google Markers
+for (resource of resourceMarkers) {
+    let marker = new google.maps.Marker({
+        map: map,
+        position: new google.maps.LatLng(resource.lat, resource.long),
+        title: resource.name,
+        content: {
+        'address': resource.address,
+        'phone':resource.phone,
+        'website': resource.website},
+        address: resource.address,
+        phone: resource.phone,
+        website: resource.website,
+        icon: blackStar
+        // })
+    })
+    problemString = resource.content;
+    infoWindow = new google.maps.InfoWindow({
+        content: problemString
+    });
+    marker.setMap(map);
+
+    marker.addListener('click', function () {
+        infowindow.open(map, marker);
+    });
+}
+
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBX9GFC7YWEnEBGM6aWQic5tq7OZ91jwFM&libraries=drawing&callback=initMap">
+// <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBX9GFC7YWEnEBGM6aWQic5tq7OZ91jwFM&callback=initMap">'
+// async defer></script>
+<p></p><p></p>
+<table border=1>
+<thead>
+<tr>
+<th>name</th>
+<th>address</th>
+<th>phone</th>
+<th>website</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boston College Legal Services LAB</td>
+<td>885 Centre Street, Newton Center , MA 02459</td>
+<td>617-552-0248</td>
+<td>https://www.bc.edu/bc-web/schools/law/academics-faculty/experiential-learning/legal-services-LAB.html</td>
+</tr>
+<tr>
+<td>Community Legal Aid – Northampton</td>
+<td>20 Hampton Avenue, Northampton , MA 01060</td>
+<td>(413) 584-4034</td>
+<td>http://www.communitylegal.org</td>
+</tr>
+<tr>
+<td>Community Legal Aid – Pittsfield</td>
+<td>152 North Street, E-155, Pittsfield , MA 01201</td>
+<td>(413) 499-1950</td>
+<td>http://www.communitylegal.org</td>
+</tr>
+<tr>
+<td>Community Legal Aid – Springfield</td>
+<td>One Monarch Place, Suite 400, Springfield , MA 01144</td>
+<td>(413) 781-7814</td>
+<td>http://www.communitylegal.org</td>
+</tr>
+<tr>
+<td>Community Legal Aid – Worcester</td>
+<td>405 Main Street, 4th floor, Worcester, MA 01608</td>
+<td>(508) 752-3718</td>
+<td>http://www.communitylegal.org</td>
+</tr>
+<tr>
+<td>De Novo </td>
+<td>47 Thorndike Street, Suite SB-LL-1, Cambridge , MA 02141</td>
+<td>(617) 661-1010</td>
+<td>http://www.denovo.org</td>
+</tr>
+<tr>
+<td>GBLS/Cambridge (Cambridge Somerville Legal Services (CASLS))</td>
+<td>60 Gore Street, Suite 203, Cambridge , MA 02141</td>
+<td>(617) 603-2700</td>
+<td>https://www.gbls.org/</td>
+</tr>
+<tr>
+<td>Greater Boston Legal Services – Boston</td>
+<td>197 Friend St, Boston, MA 02114</td>
+<td>(617) 371-1234</td>
+<td>https://www.gbls.org/</td>
+</tr>
+<tr>
+<td>Harvard Legal Aid Bureau</td>
+<td>23 Everett St, Cambridge , MA 02138</td>
+<td>617-495-4408</td>
+<td>http://www.harvardlegalaid.org/</td>
+</tr>
+<tr>
+<td>Justice Center of Southeast Massachusetts LLC</td>
+<td>62 Main Street, Suite 302, Brockton, MA 02301</td>
+<td>(508) 586-2110</td>
+<td>http://www.sccls.org</td>
+</tr>
+<tr>
+<td>Lawyers Clearinghouse</td>
+<td>7 Winthrop Square, 2nd Floor, Boston, MA 02110</td>
+<td>617-544-3434</td>
+<td>http://www.lawyersclearinghouse.org</td>
+</tr>
+<tr>
+<td>Lawyers for Civil Rights</td>
+<td>61 Batterymarch Street, Boston, MA 02110</td>
+<td>(617) 482-1145</td>
+<td>http://lawyersforcivilrights.org</td>
+</tr>
+<tr>
+<td>Massachusetts Bar Association Dial-A-Lawyer Western Mass</td>
+<td>1441 Main St. Suite 925, Springfield, MA 01103</td>
+<td>(413) 782-1659</td>
+<td>https://www.massbar.org/public/lawyer-referral-service</td>
+</tr>
+<tr>
+<td>Massachusetts Fair Housing Center</td>
+<td>57 Suffolk Street, 4th floor, Holyoke, MA 01040</td>
+<td>413-539-9796</td>
+<td>http://www.massfairhousing.org</td>
+</tr>
+<tr>
+<td>MetroWest Legal Services</td>
+<td>63 Fountain Street, Suite 304, Framingham , MA 01702</td>
+<td>508-620-1830</td>
+<td>https://www.mwlegal.org/</td>
+</tr>
+<tr>
+<td>Northeast Legal Aid – Lawrence</td>
+<td>50 Island St., #203A, Lawrence, MA 01840</td>
+<td>978-458-1465</td>
+<td>http://www.northeastlegalaid.org</td>
+</tr>
+<tr>
+<td>Northeast Legal Aid – Lowell</td>
+<td>35 John Street, Suite 302, Lowell, MA 01852</td>
+<td>978-458-1465</td>
+<td>http://www.northeastlegalaid.org</td>
+</tr>
+<tr>
+<td>Northeast Legal Aid – Lynn</td>
+<td>181 Union Street, #201A, Lynn, MA 01901</td>
+<td>978-458-1465</td>
+<td>http://www.northeastlegalaid.org</td>
+</tr>
+<tr>
+<td>Pro Bono Legal Services Program at Housing Families Inc.</td>
+<td>919 Eastern Ave, Malden, MA 02148</td>
+<td>(781) 322-9119</td>
+<td>http://housingfamilies.org/</td>
+</tr>
+<tr>
+<td>South Coastal Counties Legal Services – Fall River</td>
+<td>22 Bedford St, 1st Floor, Fall River, MA 02720</td>
+<td>(508) 676-6265</td>
+<td>http://www.sccls.org/</td>
+</tr>
+<tr>
+<td>South Coastal Counties Legal Services – Hyannis</td>
+<td>460 West Main St, Hyannis, MA 02601</td>
+<td>(508) 775-7020</td>
+<td>http://www.sccls.org/</td>
+</tr>
+<tr>
+<td>South Coastal Counties Legal Services – New Bedford</td>
+<td>21 South Sixth St, New Bedford, MA 02740</td>
+<td>(508) 979-7150</td>
+<td>http://www.sccls.org/</td>
+</tr>
+<tr>
+<td>SouthCoast Fair Housing</td>
+<td>257 Union Street, New Bedford, MA 02740</td>
+<td>(774) 473-8333</td>
+<td>http://southcoastfairhousing.org</td>
+</tr>
+<tr>
+<td>Tenant Advocacy Project</td>
+<td>6 Everett Street, Cambridge, MA 02138</td>
+<td>617-495-4394</td>
+<td>http://clinics.law.harvard.edu/tap/</td>
+</tr>
+<tr>
+<td>Volunteer Lawyers Project of the Boston Bar Association</td>
+<td>7 Winthrop Square, 2nd Floor, Boston , MA 02110</td>
+<td>(617) 423-0648</td>
+<td>https://www.vlpnet.or</td>
+</tr>
+<tr>
+<td>Women's Bar Foundation</td>
+<td>27 School Street, Boston, MA 02108</td>
+<td>617-973-6666</td>
+<td>http://womensbar.org</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+</section>
