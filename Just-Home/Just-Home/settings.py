@@ -72,7 +72,7 @@ DATABASES = {
     'ENGINE':'djongo',
     'NAME': 'justhomedb',
     'HOST': 'mongodb+srv://' + username +  ':' + password +
-            '@cluster0-j8rb9.gcp.mongodb.net/test?retryWrites=true&w=majority'
+            '@Cluster0-j8rb9.gcp.mongodb.net/justhomedb'
 
 
     }
