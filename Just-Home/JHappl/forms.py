@@ -1,8 +1,8 @@
 from django import forms
+from django.forms import ModelForm
+from .models import PDFModel
 
-# from .models import Lease
-#
-# class LeaseForm(forms.ModelForm):
-#     class Meta:
-#         model = Lease
-#         fields = ('pdf',)
+class PDFForm(ModelForm):
+    class Meta:
+        model = PDFModel
+        fields = ['name','pdf',]

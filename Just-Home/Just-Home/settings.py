@@ -11,9 +11,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-
-# username = input("database username: ")
-# password = input("database password: ")
 username = 'reg_user'
 password = '2020'
 
