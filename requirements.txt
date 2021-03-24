@@ -27,7 +27,7 @@ python-language-server==0.19.0
 pytz==2018.9
 requests==2.21.0
 rope==0.12.0
-rsa==4.0
+rsa==4.1
 singledispatch==3.4.0.3
 six==1.12.0
 snowballstemmer==1.2.1
